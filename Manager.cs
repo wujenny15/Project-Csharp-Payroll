@@ -7,11 +7,13 @@ namespace Project_Csharp_Payroll {
         public int Allowance { get; set; }
 
         public override void CalculatePay () {
-            base.CalculatePay ();
-            Allowance = 1000;
-
+           
             if (HoursWorked > 160) {
-                TotalPay = TotalPay + 1000;
+              Allowance = 1000;
+              TotalPay = BasicPay + Allowance;
+            }else{
+                Allowance = 0;
+                TotalPay = BasicPay;
             }
         }
 

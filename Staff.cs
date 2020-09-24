@@ -5,23 +5,13 @@ namespace Project_Csharp_Payroll {
         private int _hWorked;
         private float _totalPay;
 
-        public float TotalPay {
-            get {
-                return _hourlyRate * _hWorked;
-            }
-
-            protected set {
-                _totalPay = _hourlyRate + _hWorked;
-            }
-        }
+        public float TotalPay { get; protected set;}
 
         public float BasicPay {
             get {
                 return _hourlyRate * _hWorked;
             }
-
             private set {} 
-
         }
 
         public string NameOfStaff {
@@ -54,7 +44,7 @@ namespace Project_Csharp_Payroll {
         }
 
         public override string ToString () {
-            return  String.Format("Staff: {0}, hourly rate: {1}, hours worked:{2}, Basic Pay:{3}, Total Pay:{4} ", NameOfStaff, _hourlyRate, HoursWorked, BasicPay, TotalPay);
+            return  String.Format("{0}, hourly rate: {1}, hours worked:{2}, Basic Pay:{3}, Total Pay:{4} ", NameOfStaff, _hourlyRate, HoursWorked, BasicPay, TotalPay);
         }
     }
 
