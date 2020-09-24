@@ -22,7 +22,7 @@ namespace Project_Csharp_Payroll
 
         public override string ToString()
         {
-            return base.ToString() + " " + Allowance;
+            return base.ToString() + ",Allowance:" + Allowance;
         }
     }
 }
