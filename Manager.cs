@@ -3,14 +3,14 @@ namespace Project_Csharp_Payroll
 {
     public class Manager : Staff
     {
-        private const float _managerHourlyRate = 50F;
-        public Manager(string name) : base(name, _managerHourlyRate) { }
+        private const float managerHourlyRate = 50F;
 
         public int Allowance { get; set; }
 
+        public Manager(string name) : base(name, managerHourlyRate) { }
+
         public override void CalculatePay()
         {
-
             if (HoursWorked > 160)
             {
                 Allowance = 1000;
@@ -25,7 +25,7 @@ namespace Project_Csharp_Payroll
 
         public override string ToString()
         {
-            return base.ToString() + ",Allowance:" + Allowance;
+            return base.ToString() + "Allowance:" + Allowance;
         }
     }
 }

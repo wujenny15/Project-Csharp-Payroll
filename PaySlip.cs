@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -46,7 +45,7 @@ namespace Project_Csharp_Payroll
                     sw.WriteLine("Hours Worked: {0}", stf.HoursWorked);
                     sw.WriteLine("");
                     sw.WriteLine("Basic Pay: ${0}", stf.BasicPay);
-                    //TODO: Cast the Object into dynamic type
+
                     if (stf is Manager)
                     {
                         sw.WriteLine("Allowacne: ${0}", ((Manager)stf).Allowance);

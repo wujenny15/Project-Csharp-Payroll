@@ -31,7 +31,7 @@ namespace Project_Csharp_Payroll
 
         public override string ToString()
         {
-            return base.ToString() + "Overtime Pay:" + Overtime;
+            return base.ToString() + "Overtime Pay: " + Overtime;
         }
     }
 }

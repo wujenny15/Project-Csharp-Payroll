@@ -1,50 +1,64 @@
 using System;
-namespace Project_Csharp_Payroll {
-    public class Staff {
-        private float _hourlyRate;
-        private int _hWorked;
-        private float _totalPay;
+namespace Project_Csharp_Payroll
+{
+    public class Staff
+    {
+        private float hourlyRate;
+        private int hWorked;
+        private float totalPay;
 
-        public float TotalPay { get; protected set;}
+        public float TotalPay { get; protected set; }
 
-        public float BasicPay {
-            get {
-                return _hourlyRate * _hWorked;
+        public float BasicPay
+        {
+            get
+            {
+                return hourlyRate * hWorked;
             }
-            private set {} 
+            private set { }
         }
 
-        public string NameOfStaff {
+        public string NameOfStaff
+        {
             get;
             private set;
         }
 
-        public int HoursWorked {
-            get {
-                return _hWorked;
+        public int HoursWorked
+        {
+            get
+            {
+                return hWorked;
             }
-            set {
-                if (value > 0) {
-                    _hWorked = value;
-                } else {
-                    _hWorked = 0;
+            set
+            {
+                if (value > 0)
+                {
+                    hWorked = value;
+                }
+                else
+                {
+                    hWorked = 0;
                 }
             }
         }
 
-        public Staff (string name, float rate) {
+        public Staff(string name, float rate)
+        {
             NameOfStaff = name;
-            _hourlyRate = rate;
+            hourlyRate = rate;
         }
 
-        public virtual void CalculatePay () {
-            Console.WriteLine ("Calculating Pay...");
-            BasicPay = _hWorked * _hourlyRate;
-            _totalPay = BasicPay;
+        public virtual void CalculatePay()
+        {
+            Console.WriteLine("Calculating Pay...");
+            BasicPay = hWorked * hourlyRate;
+            totalPay = BasicPay;
         }
 
-        public override string ToString () {
-            return  String.Format("{0}, hourly rate: {1}, hours worked:{2}, Basic Pay:{3}, Total Pay:{4} ", NameOfStaff, _hourlyRate, HoursWorked, BasicPay, TotalPay);
+        public override string ToString()
+        {
+            return String.Format("{0}, hourly rate: {1}, hours worked:{2}, Basic Pay:{3}, Total Pay:{4} ", NameOfStaff, hourlyRate, HoursWorked, BasicPay, TotalPay);
         }
     }
 
