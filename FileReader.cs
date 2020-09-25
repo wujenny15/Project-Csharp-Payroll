@@ -1,11 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-namespace Project_Csharp_Payroll {
-    public class FileReader {
 
-        public List<Staff> ReadFile () {
-
+namespace Project_Csharp_Payroll 
+{
+    public class FileReader 
+    {
+        public List<Staff> ReadFile () 
+        {
             List<Staff> myStaff = new List<Staff> ();
 
             string currentDirectory = Directory.GetCurrentDirectory ();
@@ -35,5 +36,4 @@ namespace Project_Csharp_Payroll {
             }
         }
     }
-
 }
