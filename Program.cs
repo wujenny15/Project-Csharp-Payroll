@@ -44,8 +44,13 @@ namespace Project_Csharp_Payroll {
                     Console.WriteLine(myStaff[i].ToString());
                 }catch(FormatException ex){
                     Console.WriteLine ("The value you entered {0} is not interger value,{1}",input,ex);   
+                    i--;
                 }
             }
+
+            PaySlip ps = new PaySlip(month, year);
+            ps.GeneratePaySlip(myStaff);
+            ps.GenerateSummary(myStaff);
 
         }
     }

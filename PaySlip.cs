@@ -10,18 +10,18 @@ namespace Project_Csharp_Payroll {
         private int year;
 
         enum MonthOfYear {
-            Jan,
-            Feb,
-            Mar,
-            Apr,
-            May,
-            Jun,
-            Jul,
-            Aug,
-            Sep,
-            Oct,
-            Nov,
-            Dec
+            Jan = 1,
+            Feb = 2,
+            Mar = 3,
+            Apr = 4,
+            May = 5,
+            Jun = 6,
+            Jul = 7,
+            Aug = 8,
+            Sep = 9,
+            Oct = 10,
+            Nov = 11,
+            Dec = 12
         }
 
         public PaySlip (int payMonth, int payYear) {
@@ -34,8 +34,8 @@ namespace Project_Csharp_Payroll {
             foreach (Staff stf in myStaff) {
                 path = stf.NameOfStaff + ".txt";
                 using (StreamWriter sw = new StreamWriter (path)) {
-                    sw.WriteLine ("PAYSLIP FOR {0} {1}", month, year);
-                    sw.WriteLine ("=============================");
+                    sw.WriteLine ("PAYSLIP FOR {0} {1}", (MonthOfYear)month, year);
+                    sw.WriteLine ("===============================");
                     sw.WriteLine ("Name of Staff: {0}", stf.NameOfStaff);
                     sw.WriteLine ("Hours Worked: {0}", stf.HoursWorked);
                     sw.WriteLine ("");
@@ -46,11 +46,12 @@ namespace Project_Csharp_Payroll {
                     }
 
                     if (stf is Admin) {
-                        sw.WriteLine ("Overtime: {0}", ((Admin) stf).Overtime);
+                        sw.WriteLine ("Overtime Pay: ${0}", ((Admin) stf).Overtime);
                     }
 
-                    sw.WriteLine ("");
-                    sw.WriteLine ("Allowance: ${0}", stf.TotalPay);
+                    sw.WriteLine ("=============================");
+                    sw.WriteLine ("Total Pay: ${0}", stf.TotalPay);
+                    sw.WriteLine ("===============================");
                     sw.Close ();
                 }
             }
@@ -58,9 +59,11 @@ namespace Project_Csharp_Payroll {
 
         public void GenerateSummary (List<Staff> myStaff) {
             var staff = myStaff.Where (s => s.HoursWorked < 10).Select (s => new { s.NameOfStaff, s.HoursWorked }).OrderBy (s => s.NameOfStaff);
-            string path = "summary.txt";
-
-            using (StreamWriter sw = new StreamWriter (path)) {
+            string currentDirectory = Directory.GetCurrentDirectory ();
+            DirectoryInfo dirInfo = new DirectoryInfo (currentDirectory);
+            string fileName = Path.Combine (dirInfo.FullName, "summary.txt");
+        
+            using (StreamWriter sw = new StreamWriter (fileName)) {
                 sw.WriteLine ("Staff with less than 10 working hours");
                 sw.WriteLine (" ");
                 foreach (var stf in staff) {
@@ -72,7 +75,7 @@ namespace Project_Csharp_Payroll {
         }
 
         public override string ToString () {
-            return base.ToString () + " "+month + ""+year;
+            return base.ToString () + " "+ month + " "+year;
         }
     }
 }
